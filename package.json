@@ -1,0 +1,29 @@
+{
+  "name": "anime-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeanSolo10/anime-api.git"
+  },
+  "author": "Jeanpiere Solorzano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeanSolo10/anime-api/issues"
+  },
+  "homepage": "https://github.com/JeanSolo10/anime-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "knex": "^2.0.0",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
