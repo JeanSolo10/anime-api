@@ -16,6 +16,14 @@ module.exports = {
         this.validRequiredFields(anime);
         return knex.insert(anime).into(ANIME_TABLE).returning('id');
     },
+    async update(id, anime){
+        if (!(await this.getById(id))) {
+            throw Error(`ID '${id}' does not exit`);
+        }
+        console.log(anime);
+        this.validFields(anime);
+        return knex(ANIME_TABLE).where({id: id}).update(anime).returning('*').then(data => data[0]);
+    },
     validFields(data) {
         for (const field in data) {
             if(!validParams.includes(field)) {

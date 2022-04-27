@@ -33,17 +33,21 @@ router.post('/', async (req, res) => {
         await Anime.create(animeData);
         res.status(201).json({message: `Anime successfully added`});
     } catch (err) {
-        res.status(500).json({message: err.message})
+        res.status(500).json({message: err.message});
     }
 });
 
 // @desc Update anime
 // PATCH Request
-router.patch('/', (req, res) => {
+router.patch('/', async (req, res) => {
     try {
-        
-    } catch (error) {
-        
+        const { id } = req.body;
+        delete req.body.id;
+        const payload = req.body;
+        const updatedAnime = await Anime.update(id, payload);
+        res.status(200).json({message: `Update sucessfully sent`, result: updatedAnime});
+    } catch (err) {
+        res.status(500).json({message: err.message}); 
     }
 });
 
