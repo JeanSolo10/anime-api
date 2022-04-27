@@ -1,5 +1,6 @@
 const knex = require('../knex');
 const REVIEW_TABLE = 'reviews';
+const ANIME_REVIEW_TABLE = 'anime_review';
 const validParams = ['rating', 'comment', 'anime_id'];
 const requiredParams = ['rating', 'anime_id'];
 
@@ -19,7 +20,9 @@ module.exports = {
         if (review.rating < 0 || review.rating > 10) {
             throw Error(`Rating must be a value between 1-10!`);
         }
-        return knex.insert(review).into(REVIEW_TABLE).returning('id');
+        const createdReview = await knex.insert(review).into(REVIEW_TABLE).returning('*').then(data=>data[0]);
+        await knex.insert({anime_id: createdReview.anime_id, review_id: createdReview.id}).into(ANIME_REVIEW_TABLE);
+        return createdReview;
     },
     async update(id, review){
         if (!(await this.getReviewById(id))) {

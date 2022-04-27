@@ -35,7 +35,7 @@ router.post('/anime', async (req, res) => {
             throw Error(`Anime with id: ${reviewData.anime_id} not found!`);
         }
         await Review.create(reviewData);
-        res.status(201).json({message: `Anime successfully added`});
+        res.status(201).json({message: `Review successfully added`});
     } catch (err) {
         res.status(500).json({message: err.message});
     }
