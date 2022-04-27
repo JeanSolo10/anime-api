@@ -39,10 +39,9 @@ router.post('/', async (req, res) => {
 
 // @desc Update anime
 // PATCH Request
-router.patch('/', async (req, res) => {
+router.patch('/:id', async (req, res) => {
     try {
-        const { id } = req.body;
-        delete req.body.id;
+        const { id } = req.params;
         const payload = req.body;
         const updatedAnime = await Anime.update(id, payload);
         res.status(200).json({message: `Update sucessfully sent`, result: updatedAnime});
