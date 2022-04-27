@@ -17,18 +17,25 @@ router.get('/', async (req, res) => {
 // GET Request
 router.get('/:id', async (req, res) => {
     try {
-        console.log("params", req.params);
         const { id } = req.params;
         const anime = await Anime.getById(id);
         res.status(200).json({result: anime});
     } catch (err) {
-        res.status(500).json({message: err.message})
+        res.status(500).json({message: err.message});
     }
 });
 
 // @desc Add new anime
 // POST Request
-router.post('/', (req, res) => {});
+router.post('/', async (req, res) => {
+    try {
+        const animeData = req.body;
+        await Anime.create(animeData);
+        res.status(201).json({message: `Anime successfully added`});
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+});
 
 // @desc Update anime
 // PATCH Request
