@@ -14,9 +14,13 @@ module.exports = {
     getByName(name){
         return knex.select().from(ANIME_TABLE).whereILike('name', `${name}`).first();
     },
-    create(anime){
+    async create(anime){
         this.validFields(anime);
         this.validRequiredFields(anime);
+        const animeExists = this.getByName(anime.name) ? true : false;
+        if (animeExists){
+            throw Error(`Anime already exists!`);
+        }
         return knex.insert(anime).into(ANIME_TABLE).returning('id');
     },
     async update(id, anime){
