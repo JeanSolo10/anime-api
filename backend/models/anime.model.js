@@ -12,27 +12,24 @@ module.exports = {
         return knex.select().from(ANIME_TABLE).where({id: id}).first();
     },
     create(anime){
-        if (!this.validFields(anime)) {
-            throw Error(`Invalid field passed`);
-        } else if (!this.validRequiredFields(anime)) {
-            throw Error(`Required fields missing`);
-        }
+        this.validFields(anime);
+        this.validRequiredFields(anime);
         return knex.insert(anime).into(ANIME_TABLE).returning('id');
     },
     validFields(data) {
         for (const field in data) {
             if(!validParams.includes(field)) {
-                return false;
+                throw Error(`Invalid field: ${field}`);
             }
         }
-        return true;
+        return;
     },
     validRequiredFields(data){
         for (const field in data) {
             if(!requiredParams.includes(field)) {
-                return false;
+                throw Error(`Required fields missing`);
             }
         }
-        return true;
-    }
+        return;
+    },
 }

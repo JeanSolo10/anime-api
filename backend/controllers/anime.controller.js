@@ -39,7 +39,13 @@ router.post('/', async (req, res) => {
 
 // @desc Update anime
 // PATCH Request
-router.patch('/', (req, res) => {});
+router.patch('/', (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+});
 
 // @desc Delete anime
 // DEL Request
