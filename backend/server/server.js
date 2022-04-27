@@ -6,10 +6,10 @@ const app = express();
 
 app.use(express.json());
 
-const animeRouter = require('./routes/animeRoutes');
+const animeController = require('../controllers/anime.controller');
 
 // Anime Routes
-app.use('/api/v1/anime/', animeRouter)
+app.use('/api/v1/anime/', animeController)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const utils = require('../utils/utils');
+const Anime = require('../models/anime.model');
 
 // @desc Get all anime
 // GET Request
 router.get('/', async (req, res) => {
     try {
-        const anime = await utils.getAll("anime");
+        const anime = await Anime.getAll();
         res.status(200).json({result: anime});
     } catch(err) {
         res.status(500).json({message: err.message})

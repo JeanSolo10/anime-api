@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node backend/server/server.js",
+    "server": "nodemon backend/server/server.js",
     "migrate": "knex migrate:latest"
   },
   "repository": {
