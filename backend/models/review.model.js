@@ -31,6 +31,12 @@ module.exports = {
         }
         return knex(REVIEW_TABLE).where({id: id}).update(review).returning('*').then(data => data[0]);
     },
+    async delete(id){
+        if (!(await this.getReviewById(id))) {
+            throw Error(`Review with ID: '${id}' does not exit`);
+        }
+        return knex(REVIEW_TABLE).where({id: id}).del();
+    },
     validFields(data) {
         for (const field in data) {
             if(!validParams.includes(field)) {
