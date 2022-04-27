@@ -15,7 +15,16 @@ router.get('/', async (req, res) => {
 
 // @desc Get unique anime
 // GET Request
-router.get('/:id', (req, res) => {});
+router.get('/:id', async (req, res) => {
+    try {
+        console.log("params", req.params);
+        const { id } = req.params;
+        const anime = await Anime.getById(id);
+        res.status(200).json({result: anime});
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+});
 
 // @desc Add new anime
 // POST Request
