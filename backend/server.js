@@ -6,8 +6,9 @@ const app = express();
 
 app.use(express.json());
 
-const animeRouter = require('../routes/animeRoutes');
+const animeRouter = require('./routes/animeRoutes');
 
+// Anime Routes
 app.use('/api/v1/anime/', animeRouter)
 
 app.listen(port, () => {

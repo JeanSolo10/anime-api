@@ -1,9 +1,17 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
+const utils = require('../utils/utils');
 
 // @desc Get all anime
 // GET Request
-router.get('/', (req, res) => {});
+router.get('/', async (req, res) => {
+    try {
+        const anime = await utils.getAll("anime");
+        res.status(200).json({result: anime});
+    } catch(err) {
+        res.status(500).json({message: err.message})
+    }
+});
 
 // @desc Get unique anime
 // GET Request
