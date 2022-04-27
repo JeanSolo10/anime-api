@@ -46,8 +46,8 @@ module.exports = {
         return;
     },
     validRequiredFields(data){
-        for (const field in data) {
-            if(!requiredParams.includes(field)) {
+        for (const field of requiredParams) {
+            if(!(field in data)) {
                 throw Error(`Required fields missing`);
             }
         }

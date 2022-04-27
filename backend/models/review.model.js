@@ -23,7 +23,6 @@ module.exports = {
     validRequiredFields(data){
         for (const field of requiredParams) {
             if(!(field in data)) {
-                console.log("current field: ", field);
                 throw Error(`Required fields missing`);
             }
         }
