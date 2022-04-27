@@ -17,7 +17,7 @@ module.exports = {
     async create(anime){
         this.validFields(anime);
         this.validRequiredFields(anime);
-        const animeExists = this.getByName(anime.name) ? true : false;
+        const animeExists = await this.getByName(anime.name) ? true : false;
         if (animeExists){
             throw Error(`Anime already exists!`);
         }
