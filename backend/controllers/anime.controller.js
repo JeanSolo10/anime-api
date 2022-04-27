@@ -15,10 +15,12 @@ router.get('/', async (req, res) => {
 
 // @desc Get unique anime
 // GET Request
-router.get('/:id', async (req, res) => {
+router.get('/:idOrName', async (req, res) => {
     try {
-        const { id } = req.params;
-        const anime = await Anime.getById(id);
+        const arg = req.params.idOrName;
+        const anime = isNaN(arg) ? 
+                        await Anime.getByName(arg):
+                        await Anime.getById(arg);
         res.status(200).json({result: anime});
     } catch (err) {
         res.status(500).json({message: err.message});

@@ -11,6 +11,9 @@ module.exports = {
     getById(id){
         return knex.select().from(ANIME_TABLE).where({id: id}).first();
     },
+    getByName(name){
+        return knex.select().from(ANIME_TABLE).whereILike('name', `${name}`).first();
+    },
     create(anime){
         this.validFields(anime);
         this.validRequiredFields(anime);
