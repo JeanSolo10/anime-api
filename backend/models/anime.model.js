@@ -24,6 +24,12 @@ module.exports = {
         this.validFields(anime);
         return knex(ANIME_TABLE).where({id: id}).update(anime).returning('*').then(data => data[0]);
     },
+    async delete(id){
+        if (!(await this.getById(id))) {
+            throw Error(`ID '${id}' does not exit`);
+        }
+        return knex(ANIME_TABLE).where({id: id}).del();
+    },
     validFields(data) {
         for (const field in data) {
             if(!validParams.includes(field)) {

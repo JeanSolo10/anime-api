@@ -52,7 +52,15 @@ router.patch('/:id', async (req, res) => {
 
 // @desc Delete anime
 // DEL Request
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Anime.delete(id);
+        res.status(204).end();
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+});
 
 
 module.exports = router;
