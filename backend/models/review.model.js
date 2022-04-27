@@ -7,8 +7,11 @@ module.exports = {
     getAll(limit = 100) {
         return knex.select().from(REVIEW_TABLE).limit(limit);
     },
-    getById(id){
+    getReviewByAnimeId(id){
         return knex.select().from(REVIEW_TABLE).where({anime_id: id});
+    },
+    getReviewById(id){
+        return knex.select().from(REVIEW_TABLE).where({id: id}).first();
     },
     async create(review){
         this.validFields(review);
@@ -17,6 +20,16 @@ module.exports = {
             throw Error(`Rating must be a value between 1-10!`);
         }
         return knex.insert(review).into(REVIEW_TABLE).returning('id');
+    },
+    async update(id, review){
+        if (!(await this.getReviewById(id))) {
+            throw Error(`Review with ID: '${id}' does not exit`);
+        }
+        this.validFields(review);
+        if (review.anime_id) {
+            throw Error(`Anime id cannot be modified`);
+        }
+        return knex(REVIEW_TABLE).where({id: id}).update(review).returning('*').then(data => data[0]);
     },
     validFields(data) {
         for (const field in data) {

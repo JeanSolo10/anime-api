@@ -27,7 +27,6 @@ module.exports = {
         if (!(await this.getById(id))) {
             throw Error(`ID '${id}' does not exit`);
         }
-        console.log(anime);
         this.validFields(anime);
         return knex(ANIME_TABLE).where({id: id}).update(anime).returning('*').then(data => data[0]);
     },

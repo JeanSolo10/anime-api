@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/anime/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const reviews = await Review.getById(id);
+        const reviews = await Review.getReviewByAnimeId(id);
         res.status(200).json({result: reviews});
     } catch(err) {
         res.status(500).json({message: err.message})
@@ -43,7 +43,16 @@ router.post('/anime', async (req, res) => {
 
 // @desc Update anime review
 // PATCH Request
-router.patch('/:id', async (req, res) => {});
+router.patch('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const payload = req.body;
+        const updatedAnimeReview = await Review.update(id, payload);
+        res.status(200).json({message: `Update sucessfully sent`, result: updatedAnimeReview});
+    } catch (err) {
+        res.status(500).json({message: err.message}); 
+    }
+});
 
 // @desc Delete anime review
 // DEL Request
