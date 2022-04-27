@@ -11,7 +11,7 @@ const reviewController = require('../controllers/review.controller');
 
 // Anime Routes
 app.use('/api/v1/anime/', animeController);
-app.use('/api/v1/review/anime/', reviewController);
+app.use('/api/v1/review/', reviewController);
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

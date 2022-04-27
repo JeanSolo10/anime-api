@@ -3,13 +3,32 @@ const router = express.Router();
 const Review = require('../models/review.model');
 const Anime = require('../models/anime.model');
 
-// @desc Get review by anime id
+// @desc Get all reviews
 // GET Request
-router.get('/', async (req, res) => {});
+router.get('/', async (req, res) => {
+    try {
+        const reviews = await Review.getAll();
+        res.status(200).json({result: reviews});
+    } catch(err) {
+        res.status(500).json({message: err.message})
+    }
+});
+
+// @desc Get reviews by anime id
+// GET Request
+router.get('/anime/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const reviews = await Review.getById(id);
+        res.status(200).json({result: reviews});
+    } catch(err) {
+        res.status(500).json({message: err.message})
+    }
+});
 
 // @desc Add new review
 // POST Request
-router.post('/', async (req, res) => {
+router.post('/anime', async (req, res) => {
     try {
         const reviewData = req.body;
         if (!(await Anime.getById(reviewData.anime_id))) {

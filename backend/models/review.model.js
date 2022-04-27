@@ -4,6 +4,12 @@ const validParams = ['rating', 'comment', 'anime_id'];
 const requiredParams = ['rating', 'anime_id'];
 
 module.exports = {
+    getAll(limit = 100) {
+        return knex.select().from(REVIEW_TABLE).limit(limit);
+    },
+    getById(id){
+        return knex.select().from(REVIEW_TABLE).where({anime_id: id});
+    },
     async create(review){
         this.validFields(review);
         this.validRequiredFields(review);
