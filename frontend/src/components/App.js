@@ -19,15 +19,6 @@ function App() {
     const animeData = await axios.get('/api/v1/anime/')
         .then((response) => response.data.results)
         .then((data) => data);
-    const animeImage = animeData.map(async (anime) => {
-      const { name } = anime;
-      const animeID = await axios.get(`https://api.jikan.moe/v4/anime?letter=${name}`)
-        .then((response) => response.data)
-        .then((data) => data.data[0].mal_id);
-      anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
-        .then((response) => response.data)
-        .then((data) => data.data[0].jpg.image_url); 
-    });
     setAnimes(animeData); 
     }
   return (
