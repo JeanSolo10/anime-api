@@ -45,6 +45,7 @@ function App() {
         <>
         <SingleAnime 
           selectedAnime={selectedAnime}
+          setCurrentView={setCurrentView}
         />
         </>
       )}

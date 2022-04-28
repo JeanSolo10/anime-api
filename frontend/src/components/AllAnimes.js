@@ -23,7 +23,7 @@ export default function AllAnimes(props) {
                                     image: image_url,
                                     name: name
                                 });
-                                setCurrentView("SinglePhoto");
+                                setCurrentView("SingleAnime");
                             }}
                         />
                     </div>
