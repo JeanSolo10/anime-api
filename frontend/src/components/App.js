@@ -29,6 +29,7 @@ function App() {
           <h1>Current Season Anime</h1>
           <AllAnimes
             animes={animes}
+            setAnimes={setAnimes}            
             setSelectedAnime={setSelectedAnime}
             setCurrentView={setCurrentView}
           />

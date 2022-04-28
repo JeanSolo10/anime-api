@@ -31,7 +31,7 @@ module.exports = {
         anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
             .then((response) => response.data)
             .then((data) => data.data[0].jpg.image_url); 
-        return knex.insert(anime).into(ANIME_TABLE).returning('id');
+        return knex.insert(anime).into(ANIME_TABLE).returning('*');
     },
     async update(id, anime){
         if (!(await this.getById(id))) {
