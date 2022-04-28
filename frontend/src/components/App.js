@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../App.css';
 import AllAnimes from './AllAnimes';
 import SingleAnime from "./SingleAnime";
+import Navbar from "./NavBar";
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:5000";
 
@@ -34,6 +35,7 @@ function App() {
     <div className="App">
       {currentView === "AllAnime" ? (
         <>
+        <Navbar />
         <h1>Current Season Anime</h1>
         <AllAnimes
           animes={animes}
