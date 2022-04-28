@@ -30,6 +30,7 @@ npm i
 - ```express``` - Node.js web application framework for backend manipulation.
 - ```knex``` - SQL query builder for PostgreSQL.
 - ```pg``` - Used by knex via the knexfile.js config file to connect to PSQL database.
+- ```axios``` - HTTP Client for node.js used to request data from backend.
 
 **Dev Dependencies**
 
