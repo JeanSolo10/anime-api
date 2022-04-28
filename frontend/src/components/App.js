@@ -28,7 +28,6 @@ function App() {
         .then((response) => response.data)
         .then((data) => data.data[0].jpg.image_url); 
     });
-    //console.log("Anime Data:", animeData)
     setAnimes(animeData); 
     }
   return (

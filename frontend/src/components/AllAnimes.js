@@ -9,7 +9,6 @@ export default function AllAnimes(props) {
             {animes.map((anime) => {
                 let {id, name, image_url} = anime;
                 image_url = image_url ? image_url : '/images/anime_placeholder.jpg';
-                //console.log(anime);
                 return (
                     <div key={`anime${id}`} className="anime">
                         <h2 className="anime-title">{name}</h2>
@@ -33,6 +32,3 @@ export default function AllAnimes(props) {
         </section>
     );
 }
-
-//0: {id: 14, name: 'Naruto'}
-//1: {id: 15, name: 'Spy x Family'}
