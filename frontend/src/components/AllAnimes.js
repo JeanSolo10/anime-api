@@ -7,17 +7,22 @@ export default function AllAnimes(props) {
         <section className="all-anime">
             <div className="all-anime-container">
             {animes.map((anime) => {
-                const {id, name, image_url} = anime;
-                console.log(anime);
+                let {id, name, image_url} = anime;
+                image_url = image_url ? image_url : '/images/anime_placeholder.jpg';
+                //console.log(anime);
                 return (
                     <div key={`anime${id}`} className="anime">
                         <h2 className="anime-title">{name}</h2>
                         <img
                             className="anime-image"
                             alt="anime view"
-                            src={image_url ? image_url : '/images/anime_placeholder.jpg'}
+                            src={image_url}
                             onClick={() => {
-                                setSelectedAnime(id);
+                                setSelectedAnime({
+                                    id: id,
+                                    image: image_url,
+                                    name: name
+                                });
                                 setCurrentView("SinglePhoto");
                             }}
                         />

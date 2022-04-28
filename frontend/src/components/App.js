@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../App.css';
 import AllAnimes from './AllAnimes';
+import SingleAnime from "./SingleAnime";
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:5000";
 
@@ -41,7 +42,11 @@ function App() {
         />
         </>
       ) : (
-        <h1>Single Anime</h1>
+        <>
+        <SingleAnime 
+          selectedAnime={selectedAnime}
+        />
+        </>
       )}
     </div>
   );
