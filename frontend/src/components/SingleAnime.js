@@ -14,7 +14,7 @@ export default function SingleAnime(props) {
     const fetchReviewData = async () => {
         const reviews = await axios.get(`/api/v1/review/anime/${selectedAnime.id}`)
             .then((response) => response)
-            .then((data) => data.data.result);
+            .then((data) => data.data.results);
         setReviews(reviews);
     }
       

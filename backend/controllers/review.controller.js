@@ -8,7 +8,7 @@ const Anime = require('../models/anime.model');
 router.get('/', async (req, res) => {
     try {
         const reviews = await Review.getAll();
-        res.status(200).json({result: reviews});
+        res.status(200).json({results: reviews});
     } catch(err) {
         res.status(500).json({message: err.message})
     }
@@ -20,7 +20,7 @@ router.get('/anime/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const reviews = await Review.getReviewByAnimeId(id);
-        res.status(200).json({result: reviews});
+        res.status(200).json({results: reviews});
     } catch(err) {
         res.status(500).json({message: err.message})
     }
@@ -48,7 +48,7 @@ router.patch('/:id', async (req, res) => {
         const { id } = req.params;
         const payload = req.body;
         const updatedAnimeReview = await Review.update(id, payload);
-        res.status(200).json({message: `Update sucessfully sent`, result: updatedAnimeReview});
+        res.status(200).json({message: `Update sucessfully sent`, results: updatedAnimeReview});
     } catch (err) {
         res.status(500).json({message: err.message}); 
     }

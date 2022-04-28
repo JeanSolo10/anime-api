@@ -17,7 +17,7 @@ function App() {
 
   const fetchAnimeData = async () => {
     const animeData = await axios.get('/api/v1/anime/')
-        .then((response) => response.data.result)
+        .then((response) => response.data.results)
         .then((data) => data);
     const animeImage = animeData.map(async (anime) => {
       const { name } = anime;

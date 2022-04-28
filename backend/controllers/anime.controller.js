@@ -7,7 +7,7 @@ const Anime = require('../models/anime.model');
 router.get('/', async (req, res) => {
     try {
         const anime = await Anime.getAll();
-        res.status(200).json({result: anime});
+        res.status(200).json({results: anime});
     } catch(err) {
         res.status(500).json({message: err.message})
     }
@@ -22,7 +22,7 @@ router.get('/:idOrName', async (req, res) => {
                         await Anime.getByName(arg):
                         await Anime.getById(arg);
         if (anime) {
-            res.status(200).json({result: anime});
+            res.status(200).json({results: anime});
         } else {
             res.status(404).json({message: `Anime not found! Verify that the id or name is valid`});
         }
@@ -50,7 +50,7 @@ router.patch('/:id', async (req, res) => {
         const { id } = req.params;
         const payload = req.body;
         const updatedAnime = await Anime.update(id, payload);
-        res.status(200).json({message: `Update sucessfully sent`, result: updatedAnime});
+        res.status(200).json({message: `Update sucessfully sent`, results: updatedAnime});
     } catch (err) {
         res.status(500).json({message: err.message}); 
     }
