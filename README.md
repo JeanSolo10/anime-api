@@ -1,5 +1,5 @@
 # anime-api
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/JeanSolo10/anime-api)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/JeanSolo10/anime-api/#)
 
 This CRUD API was created during my time as a student at Code Chrysalis. It connects to a PostgresSQL database via the Knex.js library. 
 anime-api allows you to add animes and reviews into the database. A React front-end application is also included to display present data.
