@@ -2,6 +2,7 @@ const knex = require('../knex');
 const ANIME_TABLE = 'anime';
 const validParams = ['name'];
 const requiredParams = ['name'];
+const axios = require("axios");
 
 
 module.exports = {
@@ -21,6 +22,15 @@ module.exports = {
         if (animeExists){
             throw Error(`Anime already exists!`);
         }
+
+        //Add image url to images
+        const { name } = anime;
+        const animeID = await axios.get(`https://api.jikan.moe/v4/anime?letter=${anime.name}`)
+            .then((response) => response.data)
+            .then((data) => data.data[0].mal_id);
+        anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
+            .then((response) => response.data)
+            .then((data) => data.data[0].jpg.image_url); 
         return knex.insert(anime).into(ANIME_TABLE).returning('id');
     },
     async update(id, anime){
