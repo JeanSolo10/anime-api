@@ -78,7 +78,7 @@ GET http://localhost:5000/api/v1/anime/1
     {
       "id": 1,
       "name": "Spy x Family"
-      "image": "https://cdn.myanimelist.net/images/anime/1441/122795.jpg"
+      "image_url": "https://cdn.myanimelist.net/images/anime/1441/122795.jpg"
     }
   ]
 }

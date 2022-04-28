@@ -20,25 +20,25 @@ function App() {
         .then((response) => response.data.results)
         .then((data) => data);
     setAnimes(animeData); 
-    }
+  }
   return (
     <div className="App">
+      <Navbar />
       {currentView === "AllAnime" ? (
         <>
-        <Navbar />
-        <h1>Current Season Anime</h1>
-        <AllAnimes
-          animes={animes}
-          setSelectedAnime={setSelectedAnime}
-          setCurrentView={setCurrentView}
-        />
+          <h1>Current Season Anime</h1>
+          <AllAnimes
+            animes={animes}
+            setSelectedAnime={setSelectedAnime}
+            setCurrentView={setCurrentView}
+          />
         </>
       ) : (
         <>
-        <SingleAnime 
-          selectedAnime={selectedAnime}
-          setCurrentView={setCurrentView}
-        />
+          <SingleAnime 
+            selectedAnime={selectedAnime}
+            setCurrentView={setCurrentView}
+          />
         </>
       )}
     </div>
