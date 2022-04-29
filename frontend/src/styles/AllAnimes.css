@@ -1,0 +1,25 @@
+.all-anime-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+}
+
+.all-anime-container img {
+    height: 315px;
+    width: 225px;
+}
+
+.anime-title {
+    height: 5rem;
+    align-items: center;
+    align-content: center;
+}
+
+.anime-title h2 {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
