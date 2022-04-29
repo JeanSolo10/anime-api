@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/server/server.js",
     "server": "nodemon backend/server/server.js",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
