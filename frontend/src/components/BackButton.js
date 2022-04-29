@@ -4,9 +4,9 @@ export default function BackButton(props) {
     const { setCurrentView } = props;
     return (
         <>
-        <button
-            onClick={() => setCurrentView("AllAnime")}
-        >Go Back</button>
+            <button class="back-btn"
+                onClick={() => setCurrentView("AllAnime")}
+            >Go Back</button>
         </>
     )
 }

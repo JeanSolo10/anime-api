@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:5000";
 
+
 export default function AnimeForm(props) {
     const [animeName, setAnimeName] = useState();
     const { setFormView, setAnimes, animes } = props;
@@ -33,7 +34,7 @@ export default function AnimeForm(props) {
 
     return (
         <>
-            <button onClick={() => setFormView("")}>Back to Home</button>
+            <button class="home-btn" onClick={() => setFormView("")}>Back to Home</button>
             <h1>Add Anime!</h1>
             <form className="anime-form">
                 <label>Anime Name:</label>

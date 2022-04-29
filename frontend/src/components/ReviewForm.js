@@ -50,7 +50,7 @@ export default function ReviewForm(props) {
 
     return (
         <>
-            <button onClick={() => setReviewForm("")}>Back to Home</button>
+            <button class="review-back-btn" onClick={() => setReviewForm("")}>Back to Home</button>
             <h1>Add Review!</h1>
             <form className="anime-form">
                 <label>Rating:</label>

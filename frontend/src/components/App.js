@@ -4,6 +4,7 @@ import AllAnimes from './AllAnimes';
 import SingleAnime from "./SingleAnime";
 import Navbar from "./NavBar";
 import axios from 'axios';
+import "../styles/Button.css";
 axios.defaults.baseURL = "http://localhost:5000";
 
 function App() {

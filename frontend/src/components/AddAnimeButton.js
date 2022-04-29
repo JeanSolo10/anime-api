@@ -5,7 +5,7 @@ export default function AddAnimeButton(props) {
 
     return (
         <>
-            <button
+            <button class="add-anime-btn"
                 onClick={() => setFormView("Form")}
             >Add Anime</button>
         </>
