@@ -5,22 +5,16 @@ const Anime = require('../models/anime.model');
 
 // @desc Get all reviews
 // GET Request
+// @params: accepts anime_id parameter
 router.get('/', async (req, res) => {
     try {
-        const reviews = await Review.getAll();
-        res.status(200).json({results: reviews});
-    } catch(err) {
-        res.status(500).json({message: err.message})
-    }
-});
-
-// @desc Get reviews by anime id
-// GET Request
-router.get('/anime/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const reviews = await Review.getReviewByAnimeId(id);
-        res.status(200).json({results: reviews});
+        if (req.query) {
+            const reviews = await Review.getReviewByAnimeId(req.query.anime_id);
+            res.status(200).json({results: reviews});
+        } else {
+            const reviews = await Review.getAll();
+            res.status(200).json({results: reviews});
+        }
     } catch(err) {
         res.status(500).json({message: err.message})
     }
@@ -28,7 +22,7 @@ router.get('/anime/:id', async (req, res) => {
 
 // @desc Add new review
 // POST Request
-router.post('/anime', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const reviewData = req.body;
         if (!(await Anime.getById(reviewData.anime_id))) {

@@ -31,7 +31,7 @@ export default function ReviewForm(props) {
             }
 
         const review = await axios
-            .post(`/api/v1/review/anime`, payload)
+            .post(`/api/v1/reviews/`, payload)
             .then((response) => {
                 if (response.status === 201) {
                     alert("Review Added!")

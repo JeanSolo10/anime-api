@@ -16,7 +16,7 @@ export default function SingleAnime(props) {
       }, []);
 
     const fetchReviewData = async () => {
-        const reviews = await axios.get(`/api/v1/review/anime/${selectedAnime.id}`)
+        const reviews = await axios.get(`/api/v1/reviews/?anime_id=${selectedAnime.id}`)
             .then((response) => response)
             .then((data) => data.data.results);
         setReviews(reviews);
