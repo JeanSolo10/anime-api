@@ -13,7 +13,6 @@ export default function AnimeForm(props) {
     const addAnime = async (event) => {
         event.preventDefault();
         if (!animeName) return alert("Name is required!");
-
         const anime = await axios
             .post("/api/v1/anime", {
                 name: animeName,

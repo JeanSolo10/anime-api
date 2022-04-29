@@ -25,12 +25,29 @@ module.exports = {
 
         //Add image url to images
         const { name } = anime;
-        const animeID = await axios.get(`https://api.jikan.moe/v4/anime?letter=${anime.name}`)
-            .then((response) => response.data)
-            .then((data) => data.data[0].mal_id);
-        anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
+        const animeID = await axios.get(`https://api.jikan.moe/v4/anime?q=${anime.name}`)
+            .then((response) => {
+                return response.data.data
+            })
+            .then((data) => 
+            {
+                const cleanedData = data.filter(anime => {
+                    let foundInSynonms;
+                    if (anime.title_synonms === undefined) {
+                        foundInSynonms = false;
+                    } else {
+                        foundInSynonms = anime.title_synonms.includes(name);
+                    }
+                    return foundInSynonms || anime.title_english === name || anime.title === name
+                })
+                return cleanedData[0].mal_id || undefined;
+            }
+            )
+        if (animeID !== undefined) {
+            anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
             .then((response) => response.data)
             .then((data) => data.data[0].jpg.image_url); 
+        }
         return knex.insert(anime).into(ANIME_TABLE).returning('*');
     },
     async update(id, anime){
