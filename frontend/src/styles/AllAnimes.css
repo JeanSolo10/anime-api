@@ -9,6 +9,7 @@
 .all-anime-container img {
     height: 315px;
     width: 225px;
+    cursor: pointer;
 }
 
 .anime-title {
