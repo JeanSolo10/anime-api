@@ -23,7 +23,28 @@ DB_PASSWORD="your_database_password"
 npm i
 ```
 
-**Dependencies**
+**Install Frontend dependencies (optional)**
+- Navigate to ```./ANIME-API/front-end``` folder to install dependencies
+- Execute ```npm i```
+
+**Start server**
+- Open a new terminal in the root folder of this project
+- Execute ```npm run server```
+
+**Start react app (optional)**
+- Open a new terminal in the ```frontend``` folder of this project
+- Execute ```npm run start```
+
+**Migration**
+
+To generate tables in the PostgresSQL database, run the following command in the terminal
+```
+knex migrate:latest
+```
+
+## Dependencies Information
+
+**Project Dependencies**
 
 - ```cors``` - Allows for frontend/backend interaction.
 - ```dotenv``` - Loads environment variables from the .env file for use in the application.
@@ -32,25 +53,13 @@ npm i
 - ```pg``` - Used by knex via the knexfile.js config file to connect to PSQL database.
 - ```axios``` - HTTP Client for node.js used to request data from backend.
 
-**Dev Dependencies**
+**Project DevDependencies**
 
 - ```nodemon``` - Listens for file changes and restarts the application.
 
-
-**Install FrontEnd dependencies**
-- Navigate to ```./ANIME-API/front-end``` folder to install dependencies
-- Execute ```npm i```
-
-**Dependencies**
+**Frontend Dependencies**
 - ```react``` - A JavaScript library for building user interfaces.
 - ```axios``` - HTTP Client for node.js used to request data from backend.
-
-**Migration**
-
-To generate tables in the PostgresSQL database, run the following command in the terminal
-```
-knex migrate:latest
-```
 
 ## Additional Notes
 
