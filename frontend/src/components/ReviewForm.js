@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/ReviewForm.css";
 axios.defaults.baseURL = "http://localhost:5000";
 
 export default function ReviewForm(props) {
@@ -50,34 +51,36 @@ export default function ReviewForm(props) {
 
     return (
         <>
-            <button class="review-back-btn" onClick={() => setReviewForm("")}>Go Back</button>
-            <h1>Add Review!</h1>
-            <form className="anime-form">
-                <label>Rating:</label>
-                <input 
-                    type="number" 
-                    min={0}
-                    max={10}
-                    placeholder="rating..." 
-                    onChange={setRatingHandler}>
-                </input>
-                <br />
-                <label>Comment:</label>
-                <br />
-                <textarea 
-                    name="comment"
-                    rows={4}
-                    cols={50}
-                    placeholder="comment..." 
-                    onChange={setCommentHandler}>
-                </textarea>
-                <br />
-                <input 
-                    type='submit' 
-                    value='Add Review' 
-                    onClick={addReview}
-                />
-            </form>
+            <div className="anime-form-container">
+                <button class="review-back-btn" onClick={() => setReviewForm("")}>Go Back</button>
+                <h1>Add Review!</h1>
+                <form className="anime-form">
+                    <label>Rating:</label>
+                    <input 
+                        type="number" 
+                        min={0}
+                        max={10}
+                        placeholder="rating..." 
+                        onChange={setRatingHandler}>
+                    </input>
+                    <br />
+                    <label>Comment:</label>
+                    <br />
+                    <textarea 
+                        name="comment"
+                        rows={4}
+                        cols={50}
+                        placeholder="comment..." 
+                        onChange={setCommentHandler}>
+                    </textarea>
+                    <br />
+                    <input 
+                        type='submit' 
+                        value='Add Review' 
+                        onClick={addReview}
+                    />
+                </form>
+            </div>
         </>
     )
 }
