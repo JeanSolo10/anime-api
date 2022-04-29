@@ -1,3 +1,11 @@
 .back-btn {
     margin-top: 1rem;
 }
+
+.review::after {
+    content:"";
+    display:block;
+    width: 80%;
+    border-bottom: 0.1em solid rgb(243, 235, 235);
+    margin: 1em auto 0;
+}
