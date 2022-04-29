@@ -25,24 +25,7 @@ module.exports = {
 
         //Add image url to images
         const { name } = anime;
-        const animeID = await axios.get(`https://api.jikan.moe/v4/anime?q=${anime.name}`)
-            .then((response) => {
-                return response.data.data
-            })
-            .then((data) => 
-            {
-                const cleanedData = data.filter(anime => {
-                    let foundInSynonms;
-                    if (anime.title_synonms === undefined) {
-                        foundInSynonms = false;
-                    } else {
-                        foundInSynonms = anime.title_synonms.includes(name);
-                    }
-                    return foundInSynonms || anime.title_english === name || anime.title === name
-                })
-                return cleanedData[0].mal_id || undefined;
-            }
-            )
+        const animeID = await this.getAnimeIdFromExternalAPI(anime.name);
         if (animeID !== undefined) {
             anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
             .then((response) => response.data)
@@ -55,6 +38,7 @@ module.exports = {
             throw Error(`ID '${id}' does not exit`);
         }
         this.validFields(anime);
+        // update image as well
         return knex(ANIME_TABLE).where({id: id}).update(anime).returning('*').then(data => data[0]);
     },
     async delete(id){
@@ -78,5 +62,26 @@ module.exports = {
             }
         }
         return;
+    },
+    async getAnimeIdFromExternalAPI(name) {
+        const id = axios.get(`https://api.jikan.moe/v4/anime?q=${name}`)
+            .then((response) => {
+                return response.data.data
+            })
+            .then((data) => 
+            {
+                const cleanedData = data.filter(anime => {
+                    let foundInSynonms;
+                    if (anime.title_synonms === undefined) {
+                        foundInSynonms = false;
+                    } else {
+                        foundInSynonms = anime.title_synonms.includes(name);
+                    }
+                    return foundInSynonms || anime.title_english === name || anime.title === name
+                })
+                return cleanedData[0].mal_id || undefined;
+            }
+            )
+        return id;
     },
 }
