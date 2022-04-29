@@ -54,8 +54,8 @@ knex migrate:latest
 
 ## Additional Notes
 
-This project contains a ```/frontend``` folder that can be used to display database data in the browser. <br />
-The backend is independent from this folder. Therefore, the ```/frontend``` folder can be removed from the project if needed.
+This project contains a ```frontend``` folder that can be used to display database data in the browser. <br />
+The backend is independent from this folder. Therefore, the ```frontend``` folder can be removed from the project if needed.
 
 # API Documentation
 
