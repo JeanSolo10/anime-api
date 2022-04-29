@@ -39,6 +39,12 @@ module.exports = {
         }
         this.validFields(anime);
         // update image as well
+        const animeID = await this.getAnimeIdFromExternalAPI(anime.name);
+        if (animeID !== undefined) {
+            anime["image_url"] = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}/pictures`)
+            .then((response) => response.data)
+            .then((data) => data.data[0].jpg.image_url); 
+        }
         return knex(ANIME_TABLE).where({id: id}).update(anime).returning('*').then(data => data[0]);
     },
     async delete(id){
