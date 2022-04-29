@@ -52,17 +52,22 @@ To generate tables in the PostgresSQL database, run the following command in the
 knex migrate:latest
 ```
 
+## Additional Notes
+
+This project contains a ```/frontend``` folder that can be used to display database data in the browser. <br />
+The backend is independent from this folder. Therefore, the ```/frontend``` folder can be removed from the project if needed.
+
 # API Documentation
 
 ## Anime
 
 | Request Type  | Request URI | Request Body Required Fields | Request Body Optional Fields | Description | 
 | ------------- | ----------- | ---------------------------- | ---------------------------- | ----------- |
-| GET  | ```/api/v1/anime/``` | N/A | N/A | List of all Anime in DB |
+| GET  | ```/api/v1/anime/``` | N/A | N/A | List of all anime |
 | GET  | ```/api/v1/anime/{idOrName}``` | N/A | N/A | Retrieve anime based on ```id``` or ```name``` |
-| POST | ```/api/v1/anime/``` | ```name``` | N/A | Add anime to DB |
+| POST | ```/api/v1/anime/``` | ```name``` | N/A | Add anime |
 | PATCH | ```/api/v1/anime/{id}``` | any optional field | ```name``` |  Update anime data based on ```id``` |
-| DELETE | ```/api/v1/anime/{id}``` | N/A | N/A | Delete anime based on ```id``` from DB |
+| DELETE | ```/api/v1/anime/{id}``` | N/A | N/A | Delete anime based on ```id```|
 
 ## Anime Example Requests
 
@@ -104,19 +109,18 @@ Body
 
 ## Reviews
 
-| Request Type  | Request URI | Request Body Required Fields | Request Body Optional Fields | Description | 
-| ------------- | ----------- | ---------------------------- | ---------------------------- | ----------- |
-| GET  | ```/api/v1/review/``` | N/A | N/A | List of all Reviews in DB |
-| GET  | ```/api/v1/review/anime/{id}``` | N/A | N/A | Retrieve reviews based on anime ```id``` |
-| POST | ```/api/v1/review/anime``` | ```anime_id``` <br /> ```rating``` (number 1-10) | ```comment``` | Add review for anime to DB |
-| PATCH | ```/api/v1/review/{id}``` | any optional field | ```rating``` <br /> ```comment``` |  Update review based on review ```id``` |
-| DELETE | ```/api/v1/review/{id}``` | N/A | N/A | Delete review based on ```id``` from DB  |
+| Request Type  | Request URI | Request Body Required Fields | Request Body Optional Fields | Query Params | Description |
+| ------------- | ----------- | ---------------------------- | ---------------------------- | ----------- | ----------- |
+| GET  | ```/api/v1/reviews/``` | N/A | N/A | ```anime_id``` | List of all Reviews or reviews based on anime ```id``` |
+| POST | ```/api/v1/reviews/``` | ```anime_id``` <br /> ```rating``` (1-10) | ```comment``` | N/A | Add review for anime |
+| PATCH | ```/api/v1/review/{id}``` | any optional field | ```rating``` <br /> ```comment``` | N/A |  Update review based on review ```id``` |
+| DELETE | ```/api/v1/review/{id}``` | N/A | N/A | N/A | Delete review based on review ```id``` |
 
 ## Review Example Requests
 
 **GET Request**
 ```
-GET http://localhost:5000/api/v1/review
+GET http://localhost:5000/api/v1/reviews
 ```
 
 **GET Response**
@@ -153,7 +157,7 @@ GET http://localhost:5000/api/v1/review
 
 **POST Request**
 ```
-POST http://localhost:5000/api/v1/review/anime
+POST http://localhost:5000/api/v1/reviews/
 
 Body
 
