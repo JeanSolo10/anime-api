@@ -36,6 +36,7 @@ router.get('/:idOrName', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const animeData = req.body;
+        console.log("INITIAL POST");
         const anime = await Anime.create(animeData);
         res.status(201).json({message: `Anime successfully added`, results:anime});
     } catch (err) {

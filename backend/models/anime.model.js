@@ -85,7 +85,10 @@ module.exports = {
                     }
                     return foundInSynonms || anime.title_english === name || anime.title === name
                 })
-                return cleanedData[0].mal_id || undefined;
+                if (cleanedData.length < 1 || cleanedData[0].mal_id === undefined) {
+                    return undefined;
+                }
+                return cleanedData[0].mal_id;
             }
             )
         return id;
