@@ -47,6 +47,7 @@ npx knex migrate:latest
 ```
 
 **Seed Files (optional)**
+
 To populate initial data into the PostgresSQL database, run the following command in the terminal:
 ```
 npm run seed
