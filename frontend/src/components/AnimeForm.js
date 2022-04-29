@@ -34,7 +34,7 @@ export default function AnimeForm(props) {
 
     return (
         <>
-            <button class="home-btn" onClick={() => setFormView("")}>Back to Home</button>
+            <button class="home-btn" onClick={() => setFormView("")}>Go Back</button>
             <h1>Add Anime!</h1>
             <form className="anime-form">
                 <label>Anime Name:</label>

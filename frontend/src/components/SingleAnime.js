@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import BackButton from './BackButton';
 import ReviewForm from './ReviewForm';
 import AddReviewButton from './AddReviewButton';
+import "../styles/SingleAnime.css";
 
 axios.defaults.baseURL = "http://localhost:5000";
 
@@ -25,11 +26,12 @@ export default function SingleAnime(props) {
     return (
         <>
         { reviewForm !== "ReviewForm"  ?
-            (
+            (   
+                <>
                 <section className="single-anime">
-                    <BackButton
-                        setCurrentView={setCurrentView}
-                    />
+                <BackButton
+                    setCurrentView={setCurrentView}
+                />
                     <div className="single-anime-image">
                         <h1>{selectedAnime.name}</h1>
                         <img src={selectedAnime.image} alt="#" />
@@ -61,6 +63,7 @@ export default function SingleAnime(props) {
                         )}
                     </div>
                 </section>
+                </>
             ) : 
             
             (
