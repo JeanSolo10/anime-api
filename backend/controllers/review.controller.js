@@ -9,7 +9,6 @@ const Anime = require('../models/anime.model');
 router.get('/', async (req, res) => {
     try {
         if (Object.keys(req.query).length !== 0) {
-            console.log("we out here");
             const reviews = await Review.getReviewByAnimeId(req.query.anime_id);
             res.status(200).json({results: reviews});
         } else {
