@@ -8,7 +8,7 @@ const Anime = require('../models/anime.model');
 // @params: accepts anime_id parameter
 router.get('/', async (req, res) => {
     try {
-        if (req.query) {
+        if (req.query === {}) {
             const reviews = await Review.getReviewByAnimeId(req.query.anime_id);
             res.status(200).json({results: reviews});
         } else {
