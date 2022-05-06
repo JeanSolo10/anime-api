@@ -10,7 +10,8 @@
     "start": "node backend/server/server.js",
     "server": "nodemon backend/server/server.js",
     "migrate": "knex migrate:latest",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm run build"
   },
   "repository": {
     "type": "git",
